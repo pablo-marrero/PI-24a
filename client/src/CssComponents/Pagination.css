@@ -1,0 +1,23 @@
+.pagination{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+    justify-content: center;
+    margin-bottom: 2%;
+}
+
+.pagination button{
+    padding: 20%;
+    color: white;
+    background-color: #1d2027;
+    border-radius: 3px;
+}
+
+.pagination button:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.pagination button:active{
+    transform: scale(.9);
+}
