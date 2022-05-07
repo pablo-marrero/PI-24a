@@ -45,6 +45,7 @@ const paginate=(pageNumber) =>setpag({
   useEffect(()=>{
     if(country){
       console.log("PAIS EN ESPECIAL")
+      // console.log(country)
       setPais(country)
     }
     else{
@@ -53,8 +54,16 @@ const paginate=(pageNumber) =>setpag({
     }
   }, [country])
 
+  
+  useEffect(()=>{
+    console.log("TODOS LOS PAISES")
+    setPais(countries)
+  },[countries])
+
+
   const hadelClick = (e)=>{
     e.preventDefault()
+    // console.log(country[0])
     dispatch(resetPais())
   }   
   

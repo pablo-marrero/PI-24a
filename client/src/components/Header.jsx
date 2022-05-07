@@ -1,7 +1,7 @@
-import React, {useState } from 'react'
+import React, {useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import "../CssComponents/Header.css"
-import { useDispatch } from 'react-redux' 
+import { useDispatch, useSelector } from 'react-redux' 
 import { resetPais, searchByName } from '../action' 
 
 export const Header = () => {
@@ -9,37 +9,51 @@ export const Header = () => {
     name:""
   }
 
+
   const [formu, setFormu] = useState(initialForm)
-  // const { country } = useSelector((state) => state)
+  const { errores } = useSelector((state) => state)
+  const [error, setError] = useState(errores)
   const dispatch = useDispatch()
 
+
+  //Captura cambios Form
   const handelChange = (e)=>{
     setFormu({
         ...formu,
         [e.target.name] : e.target.value
     })
+
+    // setError("")
   }
 
+
+  //Captura boton buscar pais
   const HandelSubmit = (e)=>{
     e.preventDefault()
     if(!formu.name){
-      alert("Datos incompletos")
+      setError("Ingresa el pais que desas buscar")
       return
     }
-      dispatch(searchByName(formu.name))
-  }
+        dispatch(searchByName(formu.name.toLowerCase()))
+    }
 
 
-  // useEffect(()=>{
-  //   if(country){
-  //     console.log("CARGUE")
-  //   }
-  //   else{console.log("SIGO CARGANDO")}
-  // }, [country])
-
+  //Reset el country del reducer
   const resetCountry = ()=>{
     dispatch(resetPais())
+    setFormu({
+      ...formu,
+      name: ""
+    })
   }
+
+//Control de error del reducer. Renderiza error
+  useEffect(()=>{
+    if(errores){
+      setError(errores.errores)
+    }
+    // else{setError("")}
+  },[errores])
 
   return (
     <header>
@@ -55,8 +69,9 @@ export const Header = () => {
                <div>
                  <label htmlFor="">
                    <input type="text" name="name" placeholder='Busca el país...' onChange={handelChange} value={formu.name}/>
-                   </label>
-                   <input type="submit" value="Buscar"/>
+                   {errores && <span>{error}</span>}
+                </label>
+                   <input type="submit" value="Buscar" name='botoncito'/>
                </div>
              </form>
          </div>
@@ -76,7 +91,7 @@ export const Header = () => {
 
           <NavLink
               // activeStyle={{ color: '#b3b3b3', fontWeight: 'bold' }}
-              className="Link" to='/about' >
+              className="Link" to='/about' onClick={resetCountry}>
               <span>About</span>
           </NavLink> 
         </div>

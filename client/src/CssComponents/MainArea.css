@@ -1,7 +1,8 @@
 main{
     width: 96%;
+    height: 100%;
     margin: auto;
-    height: auto;
+
     /* display: flex; */
 
     /* justify-content: center; */

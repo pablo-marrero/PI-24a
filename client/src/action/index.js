@@ -1,4 +1,4 @@
-import { RESET_PAIS, SEND_ACTIVITY, TRAER_PAIS, TRAER_PAISES, SEARCH_BY_NAME } from "./actionTypes";
+import { RESET_PAIS, SEND_ACTIVITY, TRAER_PAIS, TRAER_PAISES, SEARCH_BY_NAME, SEARCH_ERROR, POST_CREATED} from "./actionTypes";
 import axios from "axios";
 
 export function getCountries(){
@@ -21,35 +21,44 @@ export function resetPais(){
         type:RESET_PAIS, payload:null})
 }
 
-export function updateActivity({id,name, dificulty,duration,season}){
+export function updateActivity({idPais,name, dificulty,duration,season}){
     // console.log(id, name,dificulty,duration,season)
     return async (dispatch)=>{
+        // return console.log(idPais,name, dificulty,duration,season)
         await axios.post(`http://localhost:3001/api/activity`,
             {
-              id,
+              idPais,
               name,
               dificulty,
               duration,
               season
             }
         )
-        .then(response => console.log(response))
-        .catch(console.log(id, name,dificulty,duration,season))
+        .then(response => dispatch({type:POST_CREATED, payload:"La actividad ha sido creada!!"}))
+        .catch(console.log(idPais,name,dificulty,duration,season))
     }
 }
  
 export function searchByName(name){
     return(dispatch)=>{   
         axios.get(`http://localhost:3001/countries/?name=${name}`)
-        .then(response => dispatch({type:SEARCH_BY_NAME, payload:response.data}))
-        .catch(error => console.log(error))
+        .then(response => dispatch({type:SEARCH_BY_NAME, payload:{
+            country : response.data,
+            errores : ""
+        }}))
+        .catch(error => dispatch({type:SEARCH_ERROR, payload:{
+            country : null,
+            errores: `No se encontro el pais ${name}`
+            }
+          }
+        ))
     }
 }
 
 export function ortherBy(filter){
     return(dispatch)=>{   
         axios.get(`http://localhost:3001/countries/?filter=${filter}`)
-        .then(response => dispatch({type:TRAER_PAIS, payload:response.data}))
+        .then(response => dispatch({type:TRAER_PAISES, payload:response.data}))
     }
 }//Envio el filtro por parametro, como de actualizará el state
 // de todos los paises, actualizo el general, para no crear un caso por opcion
@@ -62,6 +71,6 @@ export function updateFilter(continente){
         let res = response.data.filter(e => e.continent.includes(continente)) //Tambien funciona
         // console.log(res.data)
         // response.data = response.data.filter(e => e.continent.toUpperCase() == continente.toUpperCase())
-        dispatch({ type: TRAER_PAIS, payload: res })
+        dispatch({ type: TRAER_PAISES, payload: res })
     }
 }

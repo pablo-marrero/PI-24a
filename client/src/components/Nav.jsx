@@ -3,6 +3,7 @@ import React, { useState, useEffect} from 'react'
 import "../CssComponents/Nav.css"
 import {useDispatch, useSelector} from "react-redux"
 import { ortherBy, updateFilter } from '../action'
+import { resetPais } from '../action' 
 // import axios from 'axios'
 
 export const Nav = () => {
@@ -31,14 +32,14 @@ export const Nav = () => {
     //       console.log(response)
     //   }
     
-    // const { countries,continent } = useSelector((state) => state)
+    // const { country } = useSelector((state) => state)
     const dispatch = useDispatch()
     
    
     const captureOrther = (e)=>{
       // console.log(e)
       e.stopPropagation()
-      // dispatch(resetPais())
+      dispatch(resetPais())
       // console.log(e.target.textContent)
       if(e.target.textContent == "A to Z"){
         dispatch(ortherBy("asce-name"))
@@ -59,6 +60,7 @@ export const Nav = () => {
 
     const captureContinent = (e)=>{
       e.stopPropagation()
+      dispatch(resetPais())
       // dispatch(updateFilter(e.target.textContent))
       // continent = countries.filter(pais => pais.continent == e.target.textContent)
       if(e.target.textContent == "All Continents"){

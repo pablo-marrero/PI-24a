@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect }  from 'react'
 import { useSelector, useDispatch } from "react-redux"
 import { Link } from 'react-router-dom'
 import { resetPais } from '../action'
 import "../CssComponents/MostrarPais.css"
+import { LookActivity } from './LookActivity'
 
 export const MostrarPais = () => {
   const { country } = useSelector((state) => state)
@@ -10,11 +11,12 @@ export const MostrarPais = () => {
 
   // country?console.log(country):console.log("no cargue todavia")
 
-  // useEffect(()=>{
-  //   setTimeout(()=>{
-  //     console.log("ACA VA EL LOADER")
-  //   },10)
-  // })
+  useEffect(()=>{
+    if(country){
+      console.log(country[0].activities.length)
+    }
+    else{console.log("prueba")}
+  }, [country])
 
   // const [pais, setPais] = useState(country)
 // console.log(pais)
@@ -23,24 +25,51 @@ let reset = ()=>{
 }
 
   return (
-    <section>
+    <section className='sectionPaisId'>
         <Link className='volver' to="/home" onClick={()=>reset()}>Volver</Link>
-    {country
-      ?<div>
         
-          <div>
+    {(country && country.length)
+    ?
+    // console.log(country[0])
+    <div className='mostraPais'>
             <picture>
-              <img src={country.imgFlags} alt="" />
+              <img src={country[0].imgFlags} alt={`img-${country[0].name}`}/>
             </picture>
-            <h2>{country.name.toUpperCase()}</h2>
-            <p><span>Capital:</span>{country.capital.substring(1,country.capital.length -1)}</p>
-            <p><span>Continent:</span>{country.continent}</p>
-            <p><span>Population:</span>{country.population}</p> 
-            <p><span>Subregion:</span>{country.subregion}</p>
+          <div>
+            <h2>{country[0].name.toUpperCase()}</h2>
+            <div className='datosParr'>
+              <p><span>Capital:</span>{country[0].capital.substring(1,country[0].capital.length -1)}</p>
+              <p><span>Continent:</span>{country[0].continent}</p>
+              <p><span>Population:</span>{country[0].population}</p> 
+              <p><span>Subregion:</span>{country[0].subregion}</p>
+            </div>
+
+
+             <h3>ACTIVITIES:</h3>
+            <div className='actividadesBase'>
+              {country[0].activities.length > 0? country[0].activities.map((e, index)=>(
+                <LookActivity key={index} datos={e} index={index}/>
+               ))
+              :<p>El país no cuenta con actividades asignadas</p>}
+            </div>
+
           </div>
-        </div>
-      :
-      console.log("cargando")
+         
+    </div>
+      : 
+      console.log("AMARILLO")
+      // <div className='mostraPais'>      
+      //     <div>
+      //       <picture>
+      //         <img src={country.imgFlags} alt="" />
+      //       </picture>
+      //       <h2>{country.name.toUpperCase()}</h2>
+      //       <p><span>Capital:</span>{country.capital.substring(1,country.capital.length -1)}</p>
+      //       <p><span>Continent:</span>{country.continent}</p>
+      //       <p><span>Population:</span>{country.population}</p> 
+      //       <p><span>Subregion:</span>{country.subregion}</p>
+      //     </div>
+      //   </div>
     }
     </section>
   )

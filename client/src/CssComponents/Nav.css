@@ -10,7 +10,9 @@ nav{width: 90vw;
     margin: auto;
     height: 8vh;
     /* background-color: rgb(45, 45, 45); */
-    background-color: #1d2027;
+    /* background-color: #1d2027; */
+    /* background-color: #699d79; */
+    background-color: #548663;
     display: flex;
     justify-content: space-between;
     margin-bottom: 2%;
@@ -45,8 +47,9 @@ nav a{
          transition: 0.3s ease-in-out;
 		}
 
-.menu li:hover{background-color: rgb(45, 45, 45);
-               color: white;
+.menu li:hover{
+                background-color: rgb(92, 92, 92);
+                color: white;
                cursor: pointer;
                transition: 0.3s ease-in-out;
 			  }
@@ -70,7 +73,9 @@ nav a{
          transition: 0.3s ease-in-out;
 }
 
-nav li li{background-color: #465150
+nav li li{
+    /* background-color: #465150 */
+    background-color: #548663;
 		 }
 
 

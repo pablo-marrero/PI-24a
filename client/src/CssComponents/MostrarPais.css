@@ -1,0 +1,67 @@
+
+.sectionFather{
+    height: 100%;
+}
+
+.sectionPaisId{
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.volver{
+    align-self: flex-end;
+    margin-bottom: 3%;
+}
+
+.mostraPais{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 3%;
+}
+
+.mostraPais>picture{
+    width: 40vw;
+    height: 30vw;
+    position: relative
+}
+
+.mostraPais>picture>img{
+    position: absolute;
+    width: 100%;
+    right: 0;
+    top: 0;
+}
+
+.mostraPais>div{
+    height: 60vh;
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+}
+
+.mostraPais>div>h3{text-align: start;}
+
+.mostraPais>div h2{
+    border-bottom: 1px solid white;
+    width: auto;
+    height: auto;
+}
+.datosParr{
+    text-align: start;
+    height: 40%;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.actividadesBase{
+    height: 55%;
+    overflow-x: hidden;
+}

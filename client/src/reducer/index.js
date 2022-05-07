@@ -1,10 +1,11 @@
-import { RESET_PAIS, SEARCH_BY_NAME, TRAER_PAIS, TRAER_PAISES } from "../action/actionTypes";
+import { RESET_PAIS, SEARCH_BY_NAME, TRAER_PAIS, TRAER_PAISES, SEARCH_ERROR, POST_CREATED } from "../action/actionTypes";
 
 
 const initialState = {
     countries: [],
     country: null,
-    continent:""
+    errores:"",
+    create: ""
 };
 
 
@@ -14,13 +15,18 @@ function reducer(state = initialState, { type, payload }) {
             return {
                 ...state,
                 countries: payload,
+                country:null,
+                errores:"",
+                creado:""
             }
         }
 
         case TRAER_PAIS:{
             return {
                 ...state,
-                country: payload
+                country: payload,
+                errores:"",
+                creado:""
             }
         }   
         case RESET_PAIS:{
@@ -38,8 +44,23 @@ function reducer(state = initialState, { type, payload }) {
         case SEARCH_BY_NAME:{
             return{
                 ...state,
-                country: payload,
+                country: payload.country,
+                errores: payload.errores
                 // filter: true
+            }
+        }
+
+        case SEARCH_ERROR:{
+            return{
+                ...state,
+                errores: payload
+            }
+        }
+
+        case POST_CREATED:{
+            return{
+                ...state,
+                create: payload
             }
         }
 
