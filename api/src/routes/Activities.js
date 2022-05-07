@@ -25,12 +25,12 @@ const { Country, Activities } = require('../db');
 router.post('/', async (req, res) =>{
     // console.log("asdfasd")   
     console.log(req.body, "Soy BODY")
-    const { idPais,name,dificultad,duracion,temporada } = req.body
-    console.log(idPais + "SOY EL IDPAIS")
+    const { idPais,name,dificulty,duration,season } = req.body
+    // console.log(idPais + "SOY EL IDPAIS")
     // console.log(name,dificultad,duracion,temporada)
     try {
         let createActivity = await Activities.create(
-            { name,dificultad,duracion,temporada }
+            { name,dificulty,duration,season }
         )
             idPais.forEach(async e =>{
             const CountriesPush = await Country.findOne({

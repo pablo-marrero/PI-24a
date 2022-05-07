@@ -87,8 +87,8 @@ router.get("/countries", async (req,res)=>{
                         }
                     }
                 })
-                countryName.length  
-                ? res.send(countryName)
+                countryName.length
+                ?  res.send(countryName)
                 : res.status(404).send("Country doesn't exist");
             }
         }catch (error) {
@@ -184,12 +184,21 @@ router.get("/countries", async (req,res)=>{
 router.get("/countries/:idPais", async (req, res)=>{
     let {idPais} = req.params;
     try {
-
+        let newArray = []
             let country = await Country.findByPk(
                 idPais.toUpperCase(),
-                {includes: {model : Activities}}
+                
+                {include: {
+                    model: Activities,
+                    attributes: ["name","dificulty","duration","season"],
+                        through: {
+                            attributes: []
+                        }
+                    }
+                }
             )
-            country?res.status(200).send(country)
+                newArray.push(country)
+            newArray.length?res.status(200).send(newArray)
             :res.status(404).json("No se encontro el pais")
         } 
     catch (error) {

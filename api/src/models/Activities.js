@@ -12,14 +12,17 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      dificultad:{
-        type: DataTypes.STRING(5)
+      dificulty:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
-      duracion:{
-        type: DataTypes.FLOAT
+      duration:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
-      temporada:{
-        type: DataTypes.ENUM("Verano","Otoño","Invierno","Primavera")
+      season:{
+        type: DataTypes.STRING,
+        allowNull: false,
       }
     },{timestamps: false}
     );
