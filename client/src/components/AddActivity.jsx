@@ -197,23 +197,25 @@ const getID = (valor)=>{
               </div>
 
               <form >
-                   <h2>Selecciona los paises</h2>
-                 <div>
-                  {countries?countries.map(e=> <CheckboxAct 
-                                key={e.id}
-                                id={e.id}
-                                name={e.name}
-                                // imgFlags={e.imgFlags}
-                                // continent={e.continent}
-                                // capital={e.capital}
-                                // population={e.population}
-                                // subregion={e.subregion}
-                                getID={getID}
-                          />)
-                            :console.log("cargando")
-                  }
+                <div>
+                      <h2>Selecciona los paises</h2>
+                    <div>
+                     {countries?countries.map(e=> <CheckboxAct 
+                                   key={e.id}
+                                   id={e.id}
+                                   name={e.name}
+                                   // imgFlags={e.imgFlags}
+                                   // continent={e.continent}
+                                   // capital={e.capital}
+                                   // population={e.population}
+                                   // subregion={e.subregion}
+                                   getID={getID}
+                             />)
+                               :console.log("cargando")
+                     }
+                    </div>
                 </div>
-
+                
                 <div className='botonCrear'>
                    <button onClick={sendActivity}>Crear</button>
                    {validation.select  && <span>{validation.select}</span>}

@@ -11,10 +11,18 @@
     flex-direction: column;
 }
 
+
 .volver{
     align-self: flex-end;
     margin-bottom: 3%;
+    padding: 1%;
+    margin-right: 3%;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    background-color: black;
 }
+.volver:visited{color: white;}
 
 .mostraPais{
     height: 100%;
@@ -45,12 +53,13 @@
     color: white;
 }
 
-.mostraPais>div>h3{text-align: start;}
+.mostraPais>div h3{text-align: start;}
 
 .mostraPais>div h2{
     border-bottom: 1px solid white;
     width: auto;
     height: auto;
+    text-align: start;
 }
 .datosParr{
     text-align: start;
@@ -64,4 +73,33 @@
 .actividadesBase{
     height: 55%;
     overflow-x: hidden;
+}
+
+/* *********** RESPONSIVE *********** */
+@media (max-width:768px){
+    .mostraPais>picture{
+        width: 50vw;
+        height: 40vw;
+    }
+}
+
+@media (max-width:425px){
+    .mostraPais{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: space-between; */
+        padding: 0 3%;
+    }
+    .mostraPais>div{
+        height: 60vh;
+        width: 80vw;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .mostraPais>picture{
+        width: 80vw;
+        height: 70vw;
+    }
 }

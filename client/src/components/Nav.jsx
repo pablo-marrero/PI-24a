@@ -4,6 +4,7 @@ import "../CssComponents/Nav.css"
 import {useDispatch, useSelector} from "react-redux"
 import { ortherBy, updateFilter } from '../action'
 import { resetPais } from '../action' 
+import { Link } from 'react-router-dom'
 // import axios from 'axios'
 
 export const Nav = () => {
@@ -79,24 +80,24 @@ export const Nav = () => {
       
 			  <li>Continentes
 			  	<ul onClick={captureContinent}>
-			  		<li>Africa</li>
-			  		<li>Americas</li>
-			  		<li>Antarctic</li>
-			  		<li>Asia</li>
-			  		<li>Europe</li>
-			  		<li>Oceania</li>
-			  		<li>All Continents</li>
+			  		<li><Link to="/home">Africa</Link></li>
+			  		<li><Link to="/home">Americas</Link></li>
+			  		<li><Link to="/home">Antarctic</Link></li>
+			  		<li><Link to="/home">Asia</Link></li>
+			  		<li><Link to="/home">Europe</Link></li>
+			  		<li><Link to="/home">Oceania</Link></li>
+			  		<li><Link to="/home">All Continents</Link></li>
 			  		{/* <li><a href="#">Orther by</a></li> */}
 			  	</ul>
 			  </li>	
       
 			  <li>Orther By
               <ul onClick={captureOrther}>
-                <li >A to Z</li>
-                <li>Z to A</li>
-                <li>Ascending Population</li>
-                <li>Descending Population</li>
-                <li>Unfiltered</li>
+                <li><Link to="/home">A to Z</Link></li>
+                <li><Link to="/home">Z to A</Link></li>
+                <li><Link to="/home">Ascending Population</Link></li>
+                <li><Link to="/home">Descending Population</Link></li>
+                <li><Link to="/home">Unfiltered</Link></li>
               </ul>
         </li>
       

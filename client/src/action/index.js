@@ -18,7 +18,11 @@ export function getCountry(id){
 
 export function resetPais(){
     return({
-        type:RESET_PAIS, payload:null})
+        type:RESET_PAIS, payload:{
+            country: null,
+            errores:"",
+            create:""
+        }})
 }
 
 export function updateActivity({idPais,name, dificulty,duration,season}){

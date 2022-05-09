@@ -4,20 +4,36 @@ header{
     background-color: #1d2027;
 }
 
-header>div{
+.content-nav{
     height: 100%;
     width: 90vw;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     margin: auto;
-    align-items: center;}
+    align-items: center;
+    position: relative;
+}
 
-header>div>div{
+.content-link{
     width: 30vw;
     line-height: 35px;
     text-align: center;
     display: flex;
     justify-content: space-evenly;
+    position: absolute;
+    right: 0;
+}
+
+.apretame{
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    background-image: url("../img/paty.png");
+    background-size: contain;
+    display: none;
+    position: absolute;
+    right: 0;
+    margin-right: 10%;
 }
 
 .Link{
@@ -96,7 +112,7 @@ header>div>div{
 /* Estilos campo input */
 .img-busca form label>input[name="name"]{
     width: 100%;
-    padding: 2vh 15%;
+    padding: 2.01vh 15%;
     /* border-radius: 15px; */
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
@@ -112,6 +128,7 @@ header>div>div{
     margin: auto;
     padding: 2vh 2vw;
     border: none;
+    outline: none;
     cursor: pointer;
 }
 
@@ -120,17 +137,84 @@ header>div>div{
 
 .img-busca span{
     height: 50%;
-    line-height: 50px;
+    line-height: 35px;
     font-size: calc(.15em + 1vw);
     width: calc( 100% - 15px);
     /* height: 100%; */
     position: absolute;
+    text-align: center;
     margin: auto;
     color: white;
     border: 1px solid white;
     border-top: none;
-    bottom: 0;
+    top: 55%;
     right: 0;
     left: 0;
 }
+.content-nav>input{transform: scale(0);}
 
+/* .hamburguesa{display: none;} */
+
+/* ************ Diseño responsive ************** */
+@media (max-width: 700px){
+    header>div{
+        width: 100vw;
+    }
+    .content-nav{width: 100vw;}
+ 
+    .apretame{
+        display: block;
+        z-index: 400;
+    }
+
+    
+    .content-nav>input:checked{
+        right: 45vw;
+        z-index: 400;
+    }
+
+    .content-nav>input:checked + .content-link{
+        display: flex;
+    }
+
+    .content-link{
+        /* display: flex; */
+        flex-direction: column;
+        justify-content: flex-start;
+        float: left;
+        top: 0;
+        z-index: 300;
+        /* top: 30; */
+        /* margin-top: 60%; */
+        width: 100vw;
+        right: 0;
+        height: 100vh;
+        background-color: rgba(0,0 ,0 , .9);
+        display: none;
+    }
+
+    
+    .content-link a{margin-top: 25%;}
+
+}
+
+@media (max-width: 425px){
+    .img-Header{
+        width: 80px;
+        height: 80px;
+    }
+
+    .img-busca form{
+        width: 90%;
+    }
+
+    .img-busca form input{
+        padding: 1vh 8%;
+    }
+    .img-busca span{
+        border-top:1px solid white ;
+        width: max-content;
+        font-size: 12px;
+    }
+
+}

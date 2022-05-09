@@ -32,7 +32,9 @@ function reducer(state = initialState, { type, payload }) {
         case RESET_PAIS:{
             return{
                 ...state,
-                country: payload
+                country: payload.countries,
+                errores: payload.errores,
+                create:payload.create
             }
         }
         // case SEND_ACTIVITY:{

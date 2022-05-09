@@ -12,7 +12,7 @@ export const CheckboxAct = ({ id , name, getID }) => {
   return (
     <div>
         <input type="checkbox" id={id} name={name} value={id} onChange={handelCheckBox}/>
-        <label htmlFor={name}> {name}</label>
+        <label htmlFor={id}> {name}</label>
     </div>
   )
 }

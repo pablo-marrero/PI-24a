@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux"
 import {  resetPais } from "../action" 
 import { Pagination } from './Pagination'
 import { Cards } from './Cards'
+import { Loader } from './Loader'
 
 
 
@@ -28,28 +29,51 @@ export const SectionOne = () => {
   //   setPais(country)
   // },[country])
 
+// const[pag,setpag]=useState({
+//   desde:1,
+//   hasta:10,
+// })
+
+
 const[pag,setpag]=useState({
-  desde:1,
-  hasta:10,
+  desde:0,
+  hasta:9,
 })
 
-const indexOfLastCountry = pag.desde * pag.hasta;
-const indexOfFirstCountry = indexOfLastCountry - pag.hasta;
-const currentCountry = pais?pais.slice(indexOfFirstCountry, indexOfLastCountry):console.log("A la carga")
+// const indexOfLastCountry = pag.desde * pag.hasta;
+// const indexOfFirstCountry = indexOfLastCountry - pag.hasta;
+// const currentCountry = pais?pais.slice(indexOfFirstCountry, indexOfLastCountry):console.log("A la carga")
 
-const paginate=(pageNumber) =>setpag({
-  ...pag,
-  desde:pageNumber
-})
+
+const indexOfLastCountry = pag.hasta + pag.desde; // 28
+const indexOfFirstCountry = indexOfLastCountry - pag.hasta; //-9
+const currentCountry = pais?pais.slice(pag.desde, pag.hasta):console.log("A la carga")
+
+const paginate=(pageNumber) =>{
+  if(pageNumber === 1){
+    setpag({
+      desde:0,
+      hasta:9
+    })
+  }
+  else{
+    setpag({
+      desde: (10 * (pageNumber-1) ) -1,
+      hasta: (9*pageNumber) + (pageNumber -1)
+    })
+  }
+  
+}
 
   useEffect(()=>{
     if(country){
       console.log("PAIS EN ESPECIAL")
       // console.log(country)
       setPais(country)
+      // dispatch(resetPais())
     }
     else{
-      console.log("TODOS LOS PAISES")
+      // console.log("SOY EL USSEFECT")
       setPais(countries)
     }
   }, [country])
@@ -57,13 +81,15 @@ const paginate=(pageNumber) =>setpag({
   
   useEffect(()=>{
     console.log("TODOS LOS PAISES")
+    console.log(countries)
     setPais(countries)
+
+    dispatch(resetPais())
   },[countries])
 
 
   const hadelClick = (e)=>{
     e.preventDefault()
-    // console.log(country[0])
     dispatch(resetPais())
   }   
   
@@ -73,10 +99,11 @@ const paginate=(pageNumber) =>setpag({
       {country && <div className='divButton'><button onClick={hadelClick}>X</button></div>}
       {pais
       ?<>
-        {!country && <Pagination countryPerPage={pag.hasta}  allCountries={pais.length} Paginate={paginate}/>}
+        {!country && <Pagination countryPerPage={10}  allCountries={pais.length} Paginate={paginate}/>}
         <Cards countries={currentCountry}/>
       </>
-      :console.log("cargando")
+      :
+      <Loader/>
     }
       {/* Pasarlo a Cards */}
       {/* {pais?pais.map(e=> <Card 

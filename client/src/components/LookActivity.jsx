@@ -2,7 +2,7 @@ import React from 'react'
 import "../CssComponents/LookActivity.css"
 
 export const LookActivity = ({datos, index}) => {
-    console.log(datos)
+    // console.log(datos)
   return (
         <div className="desplegable-uno">
             

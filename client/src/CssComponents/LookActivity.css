@@ -7,7 +7,7 @@
 
 
 .desplegable-uno label{width: 100%;
-              background-color: grey;
+              background-color: #1d2027;
               line-height: 40px;
               display: block;
              }
@@ -33,7 +33,7 @@
 }
 
 .desplegable-uno>div>p{
-    background-color:#c8dcdc;
+    background-color:rgb(87, 85, 85);
     transition: 0.5;
     /* position: absolute; */
     /* bottom: 0; */

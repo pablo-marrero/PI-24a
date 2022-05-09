@@ -57,7 +57,7 @@ export const Header = () => {
 
   return (
     <header>
-    <div> 
+    <div className='content-nav'> 
         <NavLink
             activeStyle={{ color: '#b3b3b3', fontWeight: 'bold' }}
             className='img-Header' to='/home'  onClick={resetCountry}>
@@ -71,13 +71,15 @@ export const Header = () => {
                    <input type="text" name="name" placeholder='Busca el país...' onChange={handelChange} value={formu.name}/>
                    {errores && <span>{error}</span>}
                 </label>
-                   <input type="submit" value="Buscar" name='botoncito'/>
+                <input type="submit" value="Buscar" name='botoncito'/>
                </div>
              </form>
          </div>
 
-
-        <div>
+        <label htmlFor="sdc" className='apretame'>
+        </label>
+          <input type="checkbox" name="cheaBurger" id="sdc" className=''/>
+        <div className='content-link'> 
           <NavLink
               // activeStyle={{ color: '#b3b3b3', fontWeight: 'bold' }}
               className="Link" to='/home' onClick={resetCountry}>
@@ -95,7 +97,26 @@ export const Header = () => {
               <span>About</span>
           </NavLink> 
         </div>
+
     </div>
+    {/* <div className='hamburguesa'>
+    <NavLink
+              // activeStyle={{ color: '#b3b3b3', fontWeight: 'bold' }}
+              className="Link" to='/home' onClick={resetCountry}>
+              <span>Home</span>
+          </NavLink>
+          <NavLink
+             // activeStyle={{ color: '#b3b3b3', fontWeight: 'bold' }}
+             className="Link" to='/add' >
+             <span>Add Activity</span>
+          </NavLink>
+
+          <NavLink
+              // activeStyle={{ color: '#b3b3b3', fontWeight: 'bold' }}
+              className="Link" to='/about' onClick={resetCountry}>
+              <span>About</span>
+          </NavLink> 
+    </div> */}
     </header>
   )
 }

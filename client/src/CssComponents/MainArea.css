@@ -7,3 +7,8 @@ main{
 
     /* justify-content: center; */
 }
+@media (max-width: 650px){
+    main{
+        z-index: 1;
+    }    
+}

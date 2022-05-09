@@ -53,7 +53,7 @@
 .link-card{
     text-decoration: none;
     width: 22vw;
-    height:30vh;
+    height:15vw;
     border:1px solid white;
     margin-right: 2%;
     margin-bottom: 2%;
@@ -71,7 +71,7 @@
   background: #232526;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    font-size: calc(.2em + 1vw);
 }
 
 .link-card>article>picture{
@@ -126,4 +126,27 @@ background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, F
     width: 60%;
     text-align: left;
     margin-left: 3%;
+}
+
+/* ********** RESPONSIVE ********* */
+@media (max-width:650px){
+    .link-card{
+        width: 44vw;
+        height:30vw
+    } 
+
+    .link-card>article:hover>picture>img{
+        width: 100%;
+        height: 100%;
+        transition: 0.3s ease-in-out;}
+
+    .link-card>article:active>picture>img{
+        width: 70%;
+        height: 60%;
+        transition: 0.3s ease-in-out;
+    }
+
+    .link-card>article{
+        font-size: calc(0.5em + 1vw);
+    }
 }
