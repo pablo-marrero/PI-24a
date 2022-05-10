@@ -16,7 +16,7 @@ const { Country, Activities } = require("../db")
 
 
 router.get("/countries", async (req,res)=>{
-    let { name, filter } = req.query
+    let { name, filter, act } = req.query
     try {
         const counto = await Country.count()
         if(!counto){
@@ -94,6 +94,28 @@ router.get("/countries", async (req,res)=>{
         }catch (error) {
             next(error);
         }
+
+
+        try {
+            if(act){
+                let actividades = await Country.findAll({
+                    include: {
+                        model: Activities,
+                        attributes: ['name'],
+                        through: {
+                            attributes: []
+                        },
+                        where:{
+                            name: act
+                        }
+                    }
+                })
+                res.json(actividades)
+            }
+        } catch (error) {
+            res.status(404).json("No se encontraron actividades")
+        }
+
 
         if(filter){
             switch (filter) {
@@ -205,6 +227,31 @@ router.get("/countries/:idPais", async (req, res)=>{
         
     }
 })
+
+
+// router.get("/countries", (req, res)=>{
+
+//     const { act } = req.params
+//     console.log(act + "SOY LA ACTIVIDAD")
+//     try {
+//         let actividades = Country.findAll({
+//             include: {
+//                 model: Activities,
+//                 attributes: ['name'],
+//                 through: {
+//                     attributes: []
+//                 },
+//                 where:{
+//                     attributes: act
+//                 }
+//             }
+//         })
+//         res.json(actividades)
+//     } catch (error) {
+//         res.status(404).json("No se encontraron actividades")
+//     }
+    
+// })
 
 
 

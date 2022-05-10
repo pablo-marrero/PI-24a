@@ -22,36 +22,46 @@ const { Country, Activities } = require('../db');
 //     }
 // })
 
-router.post('/', async (req, res) =>{
-    // console.log("asdfasd")   
-    console.log(req.body, "Soy BODY")
+router.post('/', async (req, res, next) =>{ 
+    // console.log(req.body, "Soy BODY")
     const { idPais,name,dificulty,duration,season } = req.body
-    // console.log(idPais + "SOY EL IDPAIS")
-    // console.log(name,dificultad,duracion,temporada)
     try {
-        let createActivity = await Activities.create(
-            { name,dificulty,duration,season }
-        )
-            idPais.forEach(async e =>{
+      
+        let [createActivity] = await Activities.findOrCreate({
+            where:{
+                name,dificulty,duration,season
+            }
+        })
+
+        idPais.forEach(async e =>{
             const CountriesPush = await Country.findOne({
                 where: { id: e }
             })
-            
-            // console.log(CountriesPush)
-            // for(let i =0; i < req.body[0].id.length; i++){
-            // let CountriesPush = await Country.findByPk(req.body[0].id[i])   
-            //     // console.log(req.body[0].id[i])
-            //     createActivity.addCountry(CountriesPush)
-            // }
-
-            // console.log(e)
              createActivity.addCountry(CountriesPush)
         })
-        console.log(createActivity)
+
+
         res.json(createActivity)
+
     } catch (error) {
+        next(error)
         // console.log(error)
-        res.status(404).send(error)
+        // res.status(404).send(error)
+    }
+})
+
+router.get("/", async (req,res)=>{
+    // console.log(Country + "SOY LA ACTIVIDAD")
+    try {
+        const actividades = await Activities.findAll()
+        console.log(actividades)
+        
+        actividades.length
+        ?res.send(actividades)
+        : res.status(404).send("Country doesn't exist");
+
+    }catch (error) {
+        res.status(404).json(error)
     }
 })
 

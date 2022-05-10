@@ -2,41 +2,26 @@ import React, { useState, useEffect} from 'react'
 // import { NavLink } from "react-router-dom";
 import "../CssComponents/Nav.css"
 import {useDispatch, useSelector} from "react-redux"
-import { ortherBy, updateFilter } from '../action'
-import { resetPais } from '../action' 
+import { getCountryAct, ortherBy, updateFilter } from '../action'
+import { resetPais, getACtivities } from '../action' 
 import { Link } from 'react-router-dom'
+import { LiActivity } from './LiActivity'
 // import axios from 'axios'
 
 export const Nav = () => {
 
-  // let initialForm = {
-  //   name:""
-  // }
-  // const [formu, setFormu] = useState(initialForm)
 
-  // const handelChange = (e)=>{
-  //   setFormu({
-  //       ...formu,
-  //       [e.target.name] : e.target.value
-  //   })
-  // }
-  
-  // let [filter, setFilter] = useState("");
-  //   const handelSubmit = (e)=>{
-     //   if(!filter.name){
-    //     e.preventDefault()
-    //     alert("Datos incompletos")
-    //     return
-    //   }
-    //   else{e.preventDefault()
-        
-    //       console.log(response)
-    //   }
-    
-    // const { country } = useSelector((state) => state)
+    const { activities } = useSelector((state) => state)
     const dispatch = useDispatch()
     
    
+    // useEffect(()=>{
+    //   if(activities.length === 0){
+    //     dispatch(getACtivities()) 
+    //   }
+    // }, [activities])
+
+
     const captureOrther = (e)=>{
       // console.log(e)
       e.stopPropagation()
@@ -73,6 +58,12 @@ export const Nav = () => {
       }
     }
 
+    const captureActivity = (e)=>{
+      e.stopPropagation()
+      dispatch(resetPais())
+      dispatch(getCountryAct(e.target.textContent))
+    }
+
   return (
     <nav>
       <ul className="menu">
@@ -98,6 +89,14 @@ export const Nav = () => {
                 <li><Link to="/home">Ascending Population</Link></li>
                 <li><Link to="/home">Descending Population</Link></li>
                 <li><Link to="/home">Unfiltered</Link></li>
+              </ul>
+        </li>
+
+        <li>Activities
+              <ul onClick={captureActivity}>
+                {activities? activities.map(e=>(
+                  <LiActivity key={e.id} name = {e.name} />
+                )): console.log("No hay actividades")}
               </ul>
         </li>
       

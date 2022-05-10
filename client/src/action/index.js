@@ -1,4 +1,4 @@
-import { RESET_PAIS, SEND_ACTIVITY, TRAER_PAIS, TRAER_PAISES, SEARCH_BY_NAME, SEARCH_ERROR, POST_CREATED} from "./actionTypes";
+import { RESET_PAIS, SEND_ACTIVITY, TRAER_PAIS, TRAER_PAISES, SEARCH_BY_NAME, SEARCH_ERROR, POST_CREATED, GET_ACTIVITIES} from "./actionTypes";
 import axios from "axios";
 
 export function getCountries(){
@@ -38,7 +38,10 @@ export function updateActivity({idPais,name, dificulty,duration,season}){
               season
             }
         )
-        .then(response => dispatch({type:POST_CREATED, payload:"La actividad ha sido creada!!"}))
+        .then(response => dispatch({type:POST_CREATED, payload:{
+            mess:"La actividad ha sido creada!!",
+            acti:name
+        }}))
         .catch(console.log(idPais,name,dificulty,duration,season))
     }
 }
@@ -76,5 +79,26 @@ export function updateFilter(continente){
         // console.log(res.data)
         // response.data = response.data.filter(e => e.continent.toUpperCase() == continente.toUpperCase())
         dispatch({ type: TRAER_PAISES, payload: res })
+    }
+}
+
+export function getACtivities(){
+    return async(dispatch)=>{
+        axios.get(`http://localhost:3001/api/activity`)
+        .then(response => dispatch ({type: GET_ACTIVITIES, payload: response.data}))
+    }
+}
+
+export function getCountryAct(act){
+    return(dispatch)=>{  
+        axios.get(`http://localhost:3001/countries/?act=${act}`)
+        .then(response => dispatch({type:TRAER_PAISES, payload:response.data}))
+    }
+}
+
+export function getCountryActSelec(act){
+    return(dispatch)=>{  
+        axios.get(`http://localhost:3001/countries/?act=${act}`)
+        .then(response => dispatch({type:GET_ACTIVITIES, payload:response.data}))
     }
 }

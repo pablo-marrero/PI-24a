@@ -2,7 +2,7 @@ import React, {useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import "../CssComponents/Header.css"
 import { useDispatch, useSelector } from 'react-redux' 
-import { resetPais, searchByName } from '../action' 
+import { resetPais, searchByName, ortherBy } from '../action' 
 
 export const Header = () => {
  let initialForm = {
@@ -26,7 +26,6 @@ export const Header = () => {
     // setError("")
   }
 
-
   //Captura boton buscar pais
   const HandelSubmit = (e)=>{
     e.preventDefault()
@@ -41,6 +40,7 @@ export const Header = () => {
   //Reset el country del reducer
   const resetCountry = ()=>{
     dispatch(resetPais())
+    dispatch(ortherBy("all"))
     setFormu({
       ...formu,
       name: ""
@@ -87,7 +87,7 @@ export const Header = () => {
           </NavLink>
           <NavLink
              // activeStyle={{ color: '#b3b3b3', fontWeight: 'bold' }}
-             className="Link" to='/add' >
+             className="Link" to='/add' onClick={resetCountry}>
              <span>Add Activity</span>
           </NavLink>
 

@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react'
 import "../CssComponents/SectionOne.css"
 import { useSelector, useDispatch } from "react-redux"
-import {  resetPais } from "../action" 
+import {  resetPais, getACtivities } from "../action" 
 import { Pagination } from './Pagination'
 import { Cards } from './Cards'
 import { Loader } from './Loader'
@@ -81,9 +81,9 @@ const paginate=(pageNumber) =>{
   
   useEffect(()=>{
     console.log("TODOS LOS PAISES")
-    console.log(countries)
+    // console.log(countries)
     setPais(countries)
-
+    dispatch(getACtivities())
     dispatch(resetPais())
   },[countries])
 

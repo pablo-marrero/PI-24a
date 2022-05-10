@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {updateActivity} from "../action"
+import {getCountryActSelec,updateActivity} from "../action"
 import "../CssComponents/AddActivity.css"
 import { CheckboxAct } from './CheckboxAct'
 
@@ -23,7 +23,7 @@ export const AddActivity = ({id}) => {
 const [formu, setFormu] = useState(initialForm)
 const [error, setError] = useState({})
 const [changeStateButton, setChangeStateButton] = useState(false)
-const { countries, create } = useSelector((state) => state)
+const { countries, create, activities } = useSelector((state) => state)
 
 
 const dispatch = useDispatch()
@@ -87,6 +87,7 @@ const changeTab = (e)=>{
     return
   }
 setChangeStateButton(true)
+dispatch(getCountryActSelec(formu.name))
 console.log("cambi2")
 }
 
@@ -117,6 +118,7 @@ const getID = (valor)=>{
       return
     }
     else{
+      console.log(activities)
       let {idPais, name, dificulty, duration, season} = formu
       dificulty = parseInt(dificulty)
       duration = parseInt(duration)
@@ -215,7 +217,6 @@ const getID = (valor)=>{
                      }
                     </div>
                 </div>
-                
                 <div className='botonCrear'>
                    <button onClick={sendActivity}>Crear</button>
                    {validation.select  && <span>{validation.select}</span>}

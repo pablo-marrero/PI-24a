@@ -1,11 +1,12 @@
-import { RESET_PAIS, SEARCH_BY_NAME, TRAER_PAIS, TRAER_PAISES, SEARCH_ERROR, POST_CREATED } from "../action/actionTypes";
+import { RESET_PAIS, SEARCH_BY_NAME, TRAER_PAIS, TRAER_PAISES, SEARCH_ERROR, POST_CREATED, GET_ACTIVITIES } from "../action/actionTypes";
 
 
 const initialState = {
     countries: [],
     country: null,
     errores:"",
-    create: ""
+    create: "",
+    activities: []
 };
 
 
@@ -62,7 +63,14 @@ function reducer(state = initialState, { type, payload }) {
         case POST_CREATED:{
             return{
                 ...state,
-                create: payload
+                create: payload.mess,
+            }
+        }
+
+        case GET_ACTIVITIES:{
+            return{
+                ...state,
+                activities: payload
             }
         }
 
