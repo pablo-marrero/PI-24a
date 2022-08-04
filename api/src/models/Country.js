@@ -37,9 +37,9 @@ module.exports = (sequelize) => {
     population:{
       type: DataTypes.INTEGER
     },
-    // activities:{
-    //   type: DataTypes.ARRAY(DataTypes.STRING)
-    // } 
+    location:{
+      type: DataTypes.ARRAY(DataTypes.STRING)
+    },
   },
     {timestamps: false}
   );

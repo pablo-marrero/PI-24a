@@ -6,6 +6,7 @@ export const CheckboxAct = ({ id , name, getID }) => {
     // const [captureValue, setCaptureValue] = useState("")
 
     const handelCheckBox = (e)=>{
+      console.log([e.target.value])
         getID([e.target.value])
     }
 

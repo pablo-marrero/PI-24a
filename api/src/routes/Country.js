@@ -2,7 +2,8 @@ const router = require("express").Router()
 const axios = require("axios")
 // const { where } = require("sequelize/types")
 const { Country, Activities } = require("../db")
-
+const { Sequelize, Op } = require("sequelize");
+const op = Sequelize.Op;
 // let generateFilter = async (dataUno, dataDos)=>{
 //     let orderAscName = await Country.findAll({
 //         order:[
@@ -40,44 +41,27 @@ router.get("/countries", async (req,res)=>{
                     region: e.region,
                     subregion: e.subregion || "No hay region",
                     area: parseInt(e.area),
-                    population: parseInt(e.population)  
+                    population: parseInt(e.population),
+                    location: e.latlng || ["No hay Data"]
                 }
                 // Country.findOrCreate({where: pais})
               })
               // )
               await Country.bulkCreate(newArray)
               res.send(newArray)
-              //   res.send("se cargo la base")
-              // }
-              //   completeBase()
+
         }
-        // try {
-        //     if(name){
-        //         let country = await Country.findAll({
-        //             where:{name : name},
-        //             includes: {
-        //                  model: Activities,
-    
-        //                 attributes: ['name'],
-        //                 through: {
-        //                     attributes: []
-        //                 }
-        //             },
-        //         }) 
-        //         console.log(country)
-        //         country.length?res.status(200).send(country):res.status(404).send("Pais no encontrado")   
-        //     }
-        // } catch (error) {
-        //     console.log(error)
-        // }
+
         try {
             if(name){
                 const countryName = await Country.findAll({
                     where: {
-                        name: name 
-                        // {
-                        //     [Op.iLike]: `%${name}%`
-                        // }
+                        name: 
+                        //         [op.like] : 
+                        //     }
+                        {
+                            [op.like]: `%${name}%`
+                        }
                     },
                     include: {
                         model: Activities,
@@ -229,29 +213,60 @@ router.get("/countries/:idPais", async (req, res)=>{
 })
 
 
-// router.get("/countries", (req, res)=>{
+// router.get("/countries/act/:name", async (req, res)=>{
 
-//     const { act } = req.params
-//     console.log(act + "SOY LA ACTIVIDAD")
+//     const { name } = req.params
+//     // console.log(act + "SOY LA ACTIVIDAD")
 //     try {
-//         let actividades = Country.findAll({
-//             include: {
-//                 model: Activities,
-//                 attributes: ['name'],
-//                 through: {
-//                     attributes: []
-//                 },
-//                 where:{
-//                     attributes: act
+//         if(name){
+//             let actividades = await Country.findAll({
+//                 include: {
+//                     model: Activities,
+//                     attributes: ['name'],
+//                     through: {
+//                         attributes: []
+//                     },
+//                     where:{
+//                         name: name
+//                     }
 //                 }
-//             }
-//         })
-//         res.json(actividades)
+//             })
+//             res.json(actividades)
+//         }
 //     } catch (error) {
 //         res.status(404).json("No se encontraron actividades")
 //     }
-    
 // })
+
+router.post("/countries/addact", async (req, res)=>{
+
+    const { name } = req.body
+ 
+    try {
+        if(name){
+            let actividades = await Country.findAll({
+                include: {
+                    model: Activities,
+                    attributes: ['name'],
+                    through: {
+                        attributes: []
+                    },
+                    // where:{
+                    //     name: !(name)
+                    // }
+                    where:{
+                        name: {
+                            [op.is] : null
+                        }
+                    }
+                }
+            })
+            res.json(actividades)
+        }
+    } catch (error) {
+        res.status(404).json("No se encontraron actividades")
+    }
+})
 
 
 

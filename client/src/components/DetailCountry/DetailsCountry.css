@@ -1,0 +1,144 @@
+
+.sectionFather{
+    height: 100%;
+}
+
+.sectionPaisId{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.volver{
+    align-self: flex-end;
+    margin-top: 1.5%;
+    padding: 1%;
+    margin-right: 3%;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    background-color: black;
+}
+.volver:visited{color: white;}
+
+.mostraPais{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5%;
+}
+
+.card-country{
+    position: relative;
+    width: 40vw;
+    height: 60vh;
+}
+
+.card-country{
+    width: 40vw;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    flex-wrap: nowrap;
+    transform-style: preserve-3d;
+    transform: perspective(500px);
+    transition: 0.3s ease-in-out;
+}
+
+.card-country>picture{
+    backface-visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.card-country>picture>img{
+    width: 100%;
+    height: 75%;
+    right: 0;
+    top: 0;
+}
+
+.actividadesBase h3{text-align: start;}
+
+.container-data-country h2{
+    border-bottom: 1px solid white;
+    width: auto;
+    height: auto;
+    text-align: start;
+}
+
+.container-map{
+    width: 100%;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    transition: 0.3s ease-in-out;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    /* transform: rotateY(180deg); */
+}
+.turn{
+    /* transform: none; */
+    transform: rotateY(180deg); 
+    transition: 0.3s ease-in-out;
+}
+
+.container-map>div{
+    height: 100%;
+    width: 100%;
+}
+
+.datosParr{
+    text-align: start;
+    height: 40%;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.datosParr>p{
+    margin-top: 1%;
+}
+
+.actividadesBase{
+    height: 100%;
+    width: 100%;
+    margin: 5% 0;
+}
+
+/* *********** RESPONSIVE *********** */
+@media (max-width:768px){
+    .mostraPais>picture{
+        width: 50vw;
+        height: 40vw;
+    }
+}
+
+@media (max-width:425px){
+    .mostraPais{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: space-between; */
+        padding: 0 3%;
+    }
+    .mostraPais>div{
+        height: 60vh;
+        width: 80vw;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .mostraPais>picture{
+        width: 80vw;
+        height: 70vw;
+    }
+}

@@ -1,4 +1,4 @@
-import { RESET_PAIS, SEARCH_BY_NAME, TRAER_PAIS, TRAER_PAISES, SEARCH_ERROR, POST_CREATED, GET_ACTIVITIES } from "../action/actionTypes";
+import { RESET_PAIS, SEARCH_BY_NAME, TRAER_PAIS, TRAER_PAISES, SEARCH_ERROR, POST_CREATED, GET_ACTIVITIES,COUNTRIES_WITHOUT_ACTIVITY } from "../action/actionCountries/actionTypes";
 
 
 const initialState = {
@@ -73,11 +73,19 @@ function reducer(state = initialState, { type, payload }) {
                 activities: payload
             }
         }
+        case COUNTRIES_WITHOUT_ACTIVITY:{
+            return{
+                ...state,
+                countries: payload,
+                country:null,
+                errores:"",
+                creado:""
+            }
+        }
 
         default:
             return {
-                ...state,
-                countries: payload,
+                ...state
             };
     }
 }

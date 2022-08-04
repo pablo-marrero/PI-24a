@@ -1,0 +1,220 @@
+header{
+    width: 100vw;
+    height: 18vh;
+    background-color: #1d2027;
+}
+
+.content-nav{
+    height: 100%;
+    width: 90vw;
+    display: flex;
+    /* justify-content: space-between; */
+    margin: auto;
+    align-items: center;
+    position: relative;
+}
+
+.content-link{
+    width: 30vw;
+    line-height: 35px;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    right: 0;
+}
+
+.apretame{
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    background-image: url("./img/paty.png");
+    background-size: contain;
+    display: none;
+    position: absolute;
+    right: 0;
+    margin-right: 10%;
+}
+
+.Link{
+    text-decoration: none;
+    color: white;
+    line-height: 35px;
+    /* margin-right: 5%; */
+}
+
+.Link>span:hover{
+    /* cursor: pointer; */
+    border-bottom: 1px solid white;
+    /* padding: 3% 5%; */
+}
+
+.img-Header{
+    width: 100px;
+    height: 100px;
+    background-image: url("../../img/image.jpg");
+    background-repeat: repeat-x;
+    border-radius: 50%;
+    box-shadow: inset 0 0 20px black,
+    0 0 50px rgb(132, 224, 219);
+    /* 0 0 80px rgb(183, 208, 206); */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-Header:hover{
+    box-shadow: inset 0 0 20px black,
+    0 0 50px rgb(132, 224, 219),
+    0 0 80px rgb(183, 208, 206);  
+}
+
+.img-Header>span{
+    color: white;
+}
+
+/* Estilo input texto */
+.img-busca{
+    width: 55vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 30%;
+}
+.img-busca div{
+    display: flex;
+    width:100%;
+}
+
+.img-busca form{
+    width: 70%;
+    height: 100%;
+}
+
+.img-busca form>div{
+    width: 100%;
+    height: 100%;
+}
+
+
+.img-busca form>div>label{
+    width: 100%;
+    height: 200%;
+    position: relative;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* line-height: 100px; */
+}
+
+
+/* Estilos campo input */
+.img-busca form label>input[name="name"]{
+    width: 100%;
+    padding: 2.01vh 15%;
+    /* border-radius: 15px; */
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border: none;
+    outline: none;
+    /* position: absolute; */
+}
+
+
+/* Estilos boton eviar */
+.img-busca form>div>input{
+    text-align: center;
+    margin: auto;
+    padding: 2vh 2vw;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.img-busca form>div>input:active{transform: scale(.9);}
+.img-busca form>div>input:hover{cursor: pointer;}
+
+.img-busca span{
+    height: 50%;
+    line-height: 35px;
+    font-size: calc(.15em + 1vw);
+    width: calc( 100% - 15px);
+    /* height: 100%; */
+    position: absolute;
+    text-align: center;
+    margin: auto;
+    color: white;
+    border: 1px solid white;
+    border-top: none;
+    top: 55%;
+    right: 0;
+    left: 0;
+}
+.content-nav>input{transform: scale(0);}
+
+/* .hamburguesa{display: none;} */
+
+/* ************ Diseño responsive ************** */
+@media (max-width: 700px){
+    header>div{
+        width: 100vw;
+    }
+    .content-nav{width: 100vw;}
+ 
+    .apretame{
+        display: block;
+        z-index: 400;
+    }
+
+    
+    .content-nav>input:checked{
+        right: 45vw;
+        z-index: 400;
+    }
+
+    .content-nav>input:checked + .content-link{
+        display: flex;
+    }
+
+    .content-link{
+        /* display: flex; */
+        flex-direction: column;
+        justify-content: flex-start;
+        float: left;
+        top: 0;
+        z-index: 300;
+        /* top: 30; */
+        /* margin-top: 60%; */
+        width: 100vw;
+        right: 0;
+        height: 100vh;
+        background-color: rgba(0,0 ,0 , .9);
+        display: none;
+    }
+
+    
+    .content-link a{margin-top: 25%;}
+
+}
+
+@media (max-width: 425px){
+    .img-Header{
+        width: 80px;
+        height: 80px;
+    }
+
+    .img-busca form{
+        width: 90%;
+    }
+
+    .img-busca form input{
+        padding: 1vh 8%;
+    }
+    .img-busca span{
+        border-top:1px solid white ;
+        width: max-content;
+        font-size: 12px;
+    }
+
+}
