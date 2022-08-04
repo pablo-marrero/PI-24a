@@ -1,0 +1,50 @@
+.container-table-activity{
+    width: 90vw;
+    height: 82vh;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+}
+
+.container-table-activity>ul{
+    height: 100%;
+}
+
+.container-table-activity ul{
+    list-style: none;
+}
+
+
+.container-ul-tableActivity ul{
+    color: whitesmoke;
+}
+
+.container-ul-tableActivity>ul{
+    display: flex;
+    width: 100%;
+}
+
+.container-ul-tableActivity:first-child{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+
+.container-ul-tableActivity>ul>li{
+    width: 15%;
+    line-height: 25px;
+    text-align: center;
+}
+
+.Link-addActivity{
+    align-self: flex-end;
+    margin-right: 5%;
+    margin-bottom: 3%;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: 25px;
+    color: black;
+    background-color: white;
+    font-weight: 500;
+    padding: 1% 2%;
+}

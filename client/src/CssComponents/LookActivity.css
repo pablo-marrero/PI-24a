@@ -1,0 +1,41 @@
+.desplegable-uno{
+    width: 100%;
+    margin-bottom: 1%;
+    /* margin: 5% 8%; */
+}
+
+
+
+.desplegable-uno label{width: 100%;
+              background-color: #1d2027;
+              line-height: 40px;
+              display: block;
+             }
+
+.desplegable-uno label a{
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding-left: 2%;
+    border-bottom: 1px solid black;
+}
+
+.desplegable-uno>div{
+    margin-top: 3%;
+    height: auto;
+    width: 100%;
+    background-color: #abb1ba;
+    display: none;
+}
+
+.desplegable-uno>div:target{
+    display: block;
+}
+
+.desplegable-uno>div>p{
+    background-color:rgb(87, 85, 85);
+    transition: 0.5;
+    /* position: absolute; */
+    /* bottom: 0; */
+}
+

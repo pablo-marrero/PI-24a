@@ -1,0 +1,119 @@
+.inicio{
+    background-image: url("../../img/pexels-instawalli-176851.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.inicio>div:first-child{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 65vw;
+    transform-style: preserve-3d;
+}
+
+.earth{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background-image: url("../../img/image.jpg");
+    background-repeat: repeat-x;
+    border-radius: 50%;
+    box-shadow: inset 0 0 20px black,
+    0 0 50px lightseagreen;
+    animation: animateEarth 15s linear infinite;
+}
+
+@keyframes animateEarth{
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position: -750px 0;
+    }
+}
+
+
+.inicio>div:last-child{
+    width: 35vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.inicio>div:last-child>div{
+    border-radius: 15px;
+    border: 1px solid white;
+    height: 35vh;
+    width: 25vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    color:white;
+}
+
+.inicio>div:last-child>div>p{
+    width: 70%;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* .income{width: 100%;} */
+.income{
+    color:white;
+    padding: 3% 8%;
+    border-radius: 15px;
+    background-color: rgba(33, 33, 33, 0.5);
+    align-items: flex-end;
+}
+
+.income:hover{
+    cursor: pointer;
+}
+
+.income:active{
+    transform: scale(.9);
+}
+.income:focus{transform: scale(.9);}
+
+@media (max-width: 425px){
+    .inicio{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .inicio>div:first-child{
+        width: 100%;
+        height: 55vh;
+    }
+
+    .earth{
+        right: 50%;
+        top: 100;
+        left: 50%;
+        
+    }
+
+    .inicio>div:last-child{
+        width: 100%;
+        height: 45vh;
+        margin: auto;
+    }
+
+    .inicio>div:last-child>div{
+        width: 100%;
+        border: none;
+    }
+
+    .inicio>div:last-child>div>p{
+        text-align: center;
+    }
+}

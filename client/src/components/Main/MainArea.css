@@ -1,0 +1,14 @@
+main{
+    width: 96%;
+    height: 100%;
+    margin: auto;
+
+    /* display: flex; */
+
+    /* justify-content: center; */
+}
+@media (max-width: 650px){
+    main{
+        z-index: 1;
+    }    
+}

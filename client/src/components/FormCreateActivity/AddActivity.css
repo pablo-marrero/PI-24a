@@ -1,0 +1,277 @@
+/* *************************** */
+ .activity{
+     margin: auto;
+     margin-top: 2%;
+     width: 35%;
+     height: 500px;
+     padding: 0 3%;
+     display: flex;
+     flex-direction: column;
+     flex-wrap: wrap;
+     justify-content: space-evenly;
+     border: 1px solid black;
+     border-radius: 50px;
+     background-color: #1d2027;
+}
+  
+.activity h1{
+    color: white;
+    text-shadow: 2px 1px 3px cornflowerblue;
+}
+  
+.activity div{
+    width: 100%;
+    height: 35px;
+    display: flex;
+    border: 1px solid grey;
+    border-radius: 10px;
+    position: relative;
+}
+  
+.activity div label{
+    background-color: cornflowerblue;
+    height: 100%;
+    width: 10%;
+    padding: 10px 13px;
+    color: white;
+    border-bottom-left-radius: 7px;
+    border-top-left-radius: 7px;
+    position: absolute;
+}
+  
+.activity input{
+    width: 90%;
+    height: 100%;
+    right: 0;
+    padding-left: 2%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    /* line-height: 35px;
+    min-height: 25px; */
+    border: none;
+    outline: none;
+    position: absolute;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.activity input:focus{
+        border: 2px solid cornflowerblue;
+         border-bottom-right-radius: 8px;
+         border-top-right-radius: 8px
+}
+  
+.activity div>div{
+    width: 60%;
+    height: auto;
+    margin-left: 105%;
+    /* margin-top: 100%; */
+    position: absolute;
+    font-size: calc(.1em + .8vw);
+    color:white;
+    font-weight: 500;
+    /* background-color: #dc3545; */
+    background-color: rgb(44, 133, 127);
+}
+
+.activity div>div>p::before{
+    content: "*";
+}
+
+
+/* .activity div:focus-within{
+         border: 2px solid cornflowerblue;
+         border-bottom-right-radius: 8px;
+         border-top-right-radius: 8px
+}                     */
+
+#botonCambio{
+    width: 50%;
+    margin: 0 auto;
+    
+}
+
+#botonCambio button{
+    width: 100%;
+    height: 35px;
+    min-height: 25px;
+    background-color: cornflowerblue;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+#botonCambio button:hover{cursor: pointer;}
+
+
+@media (max-width: 800px){
+    .activity div>div{
+        width: 100%;
+        height: auto;
+        margin-left: 105%;
+        /* margin-top: 100%; */
+        position: absolute;
+        font-size: calc(.3em + .8vw);
+        color:white;
+        font-weight: 500;
+        /* background-color: #dc3545; */
+        background-color: rgb(44, 133, 127);
+    }
+}
+
+/* ************************ SEGUNDO FORMULARIO *************************** */
+.divActivity{
+    width: 80%;
+    height: 80vh;
+    display: flex;
+    margin: auto;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid white;
+    color: white;
+}
+
+.divActivity>div{
+    width: 18vw;
+    height: 35vh;
+    border: 3px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.divActivity>div h2{
+    height: 10%;
+    margin-top: 3%;
+    color: white;
+}
+
+.divActivity>div>div{
+    height: 65%;
+    display: flex;
+    text-align: start;
+    justify-content: space-evenly;
+    margin-bottom: 5%;
+    font-weight: 600;
+    font-size: calc(.5em + .8vw);
+}
+.divActivity>div>div p{margin-top: 8%;}
+
+
+.divActivity>form{
+    height: 65%;
+}
+
+.divActivity>form h2{margin-bottom: 2%;}
+
+.divActivity>form>div>div:nth-child(2){
+    height: 300px;
+    overflow-y: scroll;
+    text-align: left;
+    padding-left: 4%;
+}
+
+.botonCrear{
+    position: relative;
+    width: 80%;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+.botonCrear>button{
+    padding: 4% 8%;
+    background-color: #1d2027;
+    color: white;
+    margin-top: 5%;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    margin-top: 35%;
+    /* bottom: 0; */
+}
+
+.botonCrear>button:active{
+    transform: scale(.9);
+}
+
+.botonCrear>span{
+    width: 65%;
+    position: absolute;
+    right: 0;
+    margin-top: 35%;
+    /* bottom: 0; */
+}
+
+/* ******************** RESPONSIVE ********************** */
+@media(max-width:768px){
+    .activity{
+        height: 400px;
+        width: 40%;
+    }
+
+    .divActivity>form{
+        height: 85%;
+    }
+
+}
+
+
+@media(max-width:650px){
+    .divActivity{
+       display: flex;
+       flex-direction: column;
+       width: 100%;
+       border: none;
+    }
+    .divActivity>div{
+        height: 35%;
+        width: 80%;
+    }
+
+    .divActivity>form{
+        width: 100%;
+        height: 80%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .divActivity>form>div{width: 100%;}
+
+    .botonCrear{
+        align-self: flex-end;
+        height: 15vw;
+        /* justify-self: ; */
+        /* margin: auto; */
+        margin-bottom: 10%;
+        flex-direction: column;
+    }
+    
+    .botonCrear>button{
+        right: 0;
+        left: 50%;
+        /* top: 0; */
+    }
+    .botonCrear>span{bottom: 0%;}
+
+    
+
+}
+
+
+@media(max-width:425px){
+    .activity{
+        margin-top: 15%;
+        height: 370px;
+        width: 60%;
+    }
+
+    .divActivity>form{
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: space-around;
+    }
+    .divActivity>form>div{width: 100%;}
+}
