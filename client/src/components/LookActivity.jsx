@@ -5,14 +5,10 @@ export const LookActivity = ({datos, index}) => {
     // console.log(datos)
   return (
         <div className="desplegable-uno">
-            
-            <label htmlFor=""><a href={`#target${index}`}>{datos.name}</a></label>
-			
-            <div id={`target${index}`}>
-                <p>{datos.dificulty}</p>
-                <p>{datos.duration}</p>
-                <p>{datos.season}</p>
-            </div>
-		</div>
+            <p>{datos.name}</p>
+            <p>{datos.dificulty}</p>
+            <p>{datos.duration}</p>
+            <p>{datos.season}</p>
+		  </div>
   )
 }

@@ -1,23 +1,84 @@
 .pagination{
+    width: 100%;
+    height: 80px;
+}
+
+.pagination>div{
+    width: 50%;
+    height: 100%;
+    margin: auto;
     display: flex;
-    flex-wrap: wrap;
-    gap: 2%;
     justify-content: center;
-    margin-bottom: 2%;
+    align-items: center;
 }
 
-.pagination button{
-    padding: 20%;
-    color: white;
-    background-color: #1d2027;
-    border-radius: 3px;
+.squere-button{
+    width: 44px;
+    height: 44px;
+    position: relative;
+    margin-right: 1.5%;
+    margin-left: 1.5%;
+    transform-style: preserve-3d;               
+    transition: transform 0.8s;
+    border: none;
+    outline: none;
 }
 
-.pagination button:hover{
-    transform: scale(1.2);
-    cursor: pointer;
+.squere-button span{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    font-weight: 300;
+    border: 1px solid rgb(114, 112, 112);
 }
 
-.pagination button:active{
-    transform: scale(.9);
+.squere-button>span:first-child{
+    left: 0;
+    transform:translateZ(22px);
+}
+
+.squere-button>span:nth-child(2){
+    transform-origin: center;
+    right: 0;
+    transform: translateY(-22px) rotateX(90deg);
+}
+
+.squere-button>span:nth-child(3){
+    transform:translateZ(-22px) rotateX(180deg);
+}
+
+.squere-button>span:nth-child(4){
+    transform-origin: center;
+    transform: translateY(22px) rotateX(-90deg);
+}
+
+.rotateY>span:nth-child(2){
+    transform: translateX(22px) rotateY(-270deg);
+}
+
+.rotateY>span:nth-child(3){
+    transform: translateZ(-22px) rotateY(180deg);
+}
+
+.rotateY>span:nth-child(4){
+    transform: translateX(-22px) rotateY(270deg);
+}
+
+.btn-pag-select>span{
+    background-color: rgb(94, 160, 218);
+    color:white;
+    font-weight: 600;
+    border:1px solid white;
+}
+
+.prev-next{
+    width: 20px;
+    border: 1px solid rgb(114, 112, 112);
+    outline: none;
+    font-weight: 500;
 }

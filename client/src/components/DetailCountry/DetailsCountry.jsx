@@ -12,6 +12,7 @@ export const DetailsCountry = () => {
   let dispatch= useDispatch()
   const [styleClass, setStyleClass] = useState("")
   const [haveClass, sethaveClass] = useState(false)
+  const [flagMaps, setFlagMaps] = useState("View Maps")
 
 
 let reset = ()=>{
@@ -22,10 +23,12 @@ let turn = ()=>{
   if(!haveClass){
     setStyleClass("turn")
     sethaveClass(true)
+    setFlagMaps("View Flag")
   }
   if(haveClass){
     setStyleClass("")
     sethaveClass(false)
+    setFlagMaps("View Map")
   }
 }
 
@@ -38,6 +41,7 @@ let turn = ()=>{
 <>
     <div className='mostraPais'>
       <div>
+            <button onClick={turn}>{flagMaps}</button>
           <div className={`card-country ${styleClass}`}>
             <SectionMap
               lat={country[0].location[0]}
@@ -49,7 +53,6 @@ let turn = ()=>{
                    
           </div>
         </div>
-          <button onClick={turn}>Dar vuelta</button>
 
           <div className='container-data-country'>
             <div>
@@ -67,6 +70,13 @@ let turn = ()=>{
 
     <div className='actividadesBase'>
        <h3>ACTIVITIES:</h3>
+       <div className='title-data-table'>
+        <p>Name</p>
+        <p>Dificulty</p>
+        <p>Duration</p>
+        <p>Season</p>
+       </div>
+       
        <div>
          {country[0].activities.length > 0? country[0].activities.map((e, index)=>(
            <LookActivity key={index} datos={e} index={index}/>

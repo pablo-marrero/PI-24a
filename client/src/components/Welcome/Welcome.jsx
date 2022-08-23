@@ -38,7 +38,7 @@ export const Welcome = ({cambioEstado}) => {
          <p>Log in to access the platform</p>
          {/* <button onClick={()=>cambioEstado(false)}>Ir a pagina principal</button> */}
          {/* <NavLink className="ingreso" to="/home"><button>Ingresar</button></NavLink> */}
-         <button className="income" onClick={handelLoginWithGoogle}>Ingresar</button>
+         <button className="income" onClick={handelLoginWithGoogle}>Come on</button>
          </div>
        </div>
      </section> 

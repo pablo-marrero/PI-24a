@@ -8,12 +8,8 @@ export const Card = ({id,name,imgFlags,continent,capital,population,subregion}) 
     
     let dispatch = useDispatch()
     
-    // const { country } = useSelector((state) => state)
-
     let bigCard = ()=>{
         dispatch(getCountry(id))
-        // console.log("ASDADSFGSFGHSF")
-        // alternate(false)
     }
 
     return (

@@ -1,13 +1,7 @@
 nav{width: 90vw;
     margin: auto;
     height: 8vh;
-    /* background-color: rgb(45, 45, 45); */
-    /* background-color: #1d2027; */
-    /* background-color: #699d79; */
     background-color: #548663;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2%;
     border-top: 1px solid white;
     color: white;
    }
@@ -29,6 +23,7 @@ nav a{
     height: auto;
     display: flex;
     justify-content: space-around;
+    padding: 0;
 }
 
 .menu li{width: 100%;
@@ -40,8 +35,8 @@ nav a{
 }
 
 .menu li:hover{
-                background-color: rgb(92, 92, 92);
-                color: white;
+               background-color: rgb(92, 92, 92);
+               color: white;
                cursor: pointer;
                transition: 0.3s ease-in-out;
 			  }
@@ -51,6 +46,7 @@ nav a{
 		    transform: scale(0);
             transform-origin: top;
             transition: 0.3s ease-in-out;
+            padding: 0;
 		   }
 
 .menu li a:hover{background-color: rgb(45, 45, 45);
@@ -66,16 +62,17 @@ nav a{
 }
 
 nav li li{
+    width: max-content;
     /* background-color: #465150 */
     background-color: #548663;
 		 }
 
 
-.menu  ul  ul{left: 100%;
+.menu  ul  ul{left: 0%;
 			  top: 0;
 			 }
-
-.menu  ul>li>a::before{
+             
+li>a::before{
     content: "- ";
 } 
 

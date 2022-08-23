@@ -8,6 +8,7 @@ export const loginWithGoogle = async()=>{
     let response = await signInWithPopup(auth,googleProvider)
     
     if(response) return (dispatch) =>{
+        localStorage.setItem("myUid", JSON.stringify(response.user.uid))
         dispatch({type: LOGIN, payload:response.user})
     }
 }
@@ -16,6 +17,7 @@ export const uploadUser = (currentUser)=>{
     if(currentUser){
         return (dispatch) =>{
             dispatch({type: LOGIN, payload:currentUser})
+
         }
     }
     return null
@@ -30,6 +32,7 @@ export function startGoogleLogout(){
 
 export const logout = ()=>{
     return (dispatch)=>{
+        localStorage.removeItem("myUid")
         dispatch({type: LOGOUT, payload:""})
     }
 }

@@ -40,7 +40,12 @@ header{
     text-decoration: none;
     color: white;
     line-height: 35px;
+    cursor: pointer;
     /* margin-right: 5%; */
+}
+
+.Link:hover{
+    color: white;
 }
 
 .Link>span:hover{

@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react'
 import "./SectionOne.css"
 import { useSelector, useDispatch } from "react-redux"
 import {  resetPais, getACtivities } from "../../action/actionCountries/index" 
-import { Pagination } from '../Pagination/Pagination'
+import { Paginations } from '../Pagination/Pagination'
 import { Cards } from '../Cards/Cards'
 import { Loader } from '../Loader/Loader.jsx'
 
@@ -76,9 +76,10 @@ const hadelClick = (e)=>{
     <>
     <section className='sectionFather'>
       {country && <div className='divButton'><button onClick={hadelClick}>X</button></div>}
+      
       {pais
       ?<>
-        {!country && <Pagination countryPerPage={10}  allCountries={pais.length} Paginate={paginate}/>}
+        {!country && <Paginations countryPerPage={10}  allCountries={pais.length} Paginate={paginate}/>}
         <Cards countries={currentCountry}/>
       </>
       :

@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import React from "react";
 
 export function ProtectedRoute({children}){
     const user = useSelector((state)=> state.auth.uid)
@@ -8,5 +7,6 @@ export function ProtectedRoute({children}){
     if(!user) {
         return <Redirect to='/welcome'/>
     }
+    console.log("llego al children")
     return <>{children}</>
 }

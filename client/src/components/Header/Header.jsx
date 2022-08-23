@@ -13,7 +13,6 @@ export const Header = () => {
 
   const [formu, setFormu] = useState(initialForm)
   const { errores } = useSelector((state) => state.reducer)
-  const { uid } = useSelector((state) => state.auth)
   const [error, setError] = useState(errores)
   const dispatch = useDispatch()
   //Captura cambios Form
@@ -48,7 +47,6 @@ export const Header = () => {
   }
   const handelLogout = ()=>{
     dispatch(startGoogleLogout())
-    console.log(uid)
   }
 
 //Control de error del reducer. Renderiza error
@@ -71,7 +69,7 @@ export const Header = () => {
              <form onSubmit={HandelSubmit}> 
                <div>
                  <label htmlFor="">
-                   <input type="text" name="name" placeholder='Busca el país...' onChange={handelChange} value={formu.name}/>
+                   <input type="text" name="name" placeholder='Search country...' onChange={handelChange} value={formu.name}/>
                    {errores && <span>{error}</span>}
                 </label>
                 <input type="submit" value="Buscar" name='botoncito'/>
@@ -81,7 +79,7 @@ export const Header = () => {
 
         <label htmlFor="sdc" className='apretame'>
         </label>
-          <input type="checkbox" name="cheaBurger" id="sdc" className=''/>
+          <input type="checkbox" name="cheaBurger" id="sdc"/>
         <div className='content-link'> 
 
           <NavLink

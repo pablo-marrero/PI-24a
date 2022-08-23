@@ -5,7 +5,6 @@ import {useDispatch, useSelector} from "react-redux"
 import { getCountryAct, ortherBy, updateFilter, resetPais } from '../../action/actionCountries/index'
 import { Link } from 'react-router-dom'
 import { LiActivity } from '../LiActivity'
-// import axios from 'axios'
 
 export const Nav = () => {
 

@@ -30,15 +30,31 @@
     padding: 0 5%;
 }
 
+.mostraPais>div{
+    display: flex;
+    flex-direction: column;
+}
+
+.mostraPais>div>button{
+    padding: 1.5%;
+    background-color: black;
+    color: white;
+    width: fit-content;
+    align-self: flex-end;
+    margin-bottom: 1%;
+}
+
 .card-country{
     position: relative;
+    min-height: 50vh;
     width: 40vw;
-    height: 60vh;
+    min-width: 500px;
 }
 
 .card-country{
     width: 40vw;
-    height: 60vh;
+    min-width: 500px;
+    height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -58,18 +74,16 @@
 
 .card-country>picture>img{
     width: 100%;
-    height: 75%;
+    height: 85%;
     right: 0;
     top: 0;
 }
 
-.actividadesBase h3{text-align: start;}
-
-.container-data-country h2{
-    border-bottom: 1px solid white;
-    width: auto;
-    height: auto;
-    text-align: start;
+.card-country>button{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9000;
 }
 
 .container-map{
@@ -95,6 +109,18 @@
     width: 100%;
 }
 
+.container-data-country{
+    width: 50%;
+    margin-top: 2.5%;
+}
+
+.container-data-country h2{
+    border-bottom: 1px solid white;
+    width: auto;
+    height: auto;
+    text-align: start;
+}
+
 .datosParr{
     text-align: start;
     height: 40%;
@@ -102,6 +128,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-top: 3%;
 }
 
 .datosParr>p{
@@ -111,8 +138,39 @@
 .actividadesBase{
     height: 100%;
     width: 100%;
-    margin: 5% 0;
+    margin: 0 0 5% 0;
 }
+
+.actividadesBase h3{
+    margin: auto;
+    width: 85%;
+    text-align: start;
+}
+
+.actividadesBase>div{
+    /* border: 1px solid white; */
+    width: 90%;
+    margin: auto;
+}
+
+.title-data-table{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    line-height: 32px;
+    border: 1px solid white;
+    font-weight: 600;
+}
+
+.title-data-table{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.actividadesBase>div>div:last-child{
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
 
 /* *********** RESPONSIVE *********** */
 @media (max-width:768px){

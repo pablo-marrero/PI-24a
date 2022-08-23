@@ -40,7 +40,7 @@ export function updateActivity({idPais,name, dificulty,duration,season}){
             }
         )
         .then(response => dispatch({type:POST_CREATED, payload:{
-            mess:"La actividad ha sido creada!!",
+            mess:"The activity has been created successfully!!",
             acti:name
         }}))
         .catch(console.log(idPais,name,dificulty,duration,season))

@@ -50,62 +50,48 @@ const validateForm = (formu)=>{
     ...validation,
     boton: "" 
   })
-  if(!/^[a-z ,.'-]+$/.test(formu.name) && formu.name !== ""){error.name = "El nombre solo puede contener caracteres alfabeticos"}
+  if(!/^[a-z ,.'-]+$/.test(formu.name) && formu.name !== ""){error.name = "This field can only contain alphabetic characters"}
 
-  if((formu.dificulty > 5 || formu.dificulty < 1) && formu.dificulty !== ""){error.dificulty = "El valor ingresado debe ser mayor a 1 y menor a 5"}
+  if((formu.dificulty > 5 || formu.dificulty < 1) && formu.dificulty !== ""){error.dificulty = "The value must be greater than 1 and less than 5"}
 
   if(!/([0-9]+[.,]*)+/.test(formu.duration) && formu.duration !== ""){
-    error.duration = "El formato debe ser entero , decimal (90,10)"
+    error.duration = "This field only accepts decimal and integer numbers"
   }
   
-  if(!/^[a-z ,.'-]+$/.test(formu.season) && formu.season !== ""){error.season = "La temporada solo puede contener caracteres alfabeticos"}
+  if(!/^[a-z ,.'-]+$/.test(formu.season) && formu.season !== ""){error.season = "The season can only caontain alphabetic characters"}
 
   return error
 }
 
 
-
-//Funcion para boton pasar Siguiente pagina
-const changeTab = (e)=>{
+const validate = (e)=>{
   e.preventDefault()
   console.log(error.hasOwnProperty("name"))
   if(!formu.name.trim() || !formu.dificulty.trim() || !formu.duration.trim() || !formu.season.trim()){
     setValidation({
             ...validation,
-            boton: "Por favor completa todos los campos" 
+            boton: "Please, complete all fields" 
           })
           return
   }
   if(error.hasOwnProperty("name") || error.hasOwnProperty("dificulty") || error.hasOwnProperty("duration") || error.hasOwnProperty("season")){
     setValidation({
       ...validation,
-      boton: "Por favor verifica los errores" 
+      boton: "Please check to errors" 
     })
     return
   }
 let { name, dificulty, duration, season} = formu
 dispatch(createActivity({name,dificulty, duration,season}))
-console.log("cambi2")
 dispatch(getACtivities())
 }
 
-//Tomar el id de Pais seleccionado
-// const getID = (valor)=>{
-//   setFormu({
-//     ...formu,
-//     idPais: formu.idPais.concat(valor)
-//   })
-//   setValidation({
-//     ...validation,
-//     select:""
-//   })
-// }
+
 
   return (
-  // <div>Hola</div>
       <div>
           <form className='activity'>
-                <h1>Creación de Actividad</h1>
+                <h1>Create the Activity</h1>
                 <div>
                     <label htmlFor="Name"></label>
                         <input type="text" id="name" name='name' placeholder="Name"
@@ -135,7 +121,7 @@ dispatch(getACtivities())
                 </div>
 
               <div id='botonCambio'>
-                <button onClick={changeTab}>Siguiente</button>
+                <button onClick={validate}>Create</button>
                 {/* {create && <span>{create}</span>} */}
                 {create && <div><p>{create}</p></div>}
                 {validation.boton && <div><p>{validation.boton}</p></div>}

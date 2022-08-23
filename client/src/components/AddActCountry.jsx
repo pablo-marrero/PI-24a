@@ -2,7 +2,7 @@ import React, { useState ,useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { CheckboxAct } from './CheckboxAct'
 import { useParams } from 'react-router-dom'
-import {updateActivity, getCountryWithoutActivity} from "../action/actionCountries/index"
+import {updateActivity} from "../action/actionCountries/index"
 import "./FormCreateActivity/AddActivity.css"
 
 
@@ -30,11 +30,8 @@ export const AddActCountry = () => {
     let newObj = [] 
     useEffect(()=>{
         if(activities.length){
-          // console.log(countries)
-          // console.log(activities)
                 if(name){
                   newObj = activities.filter(e => e.name === name.slice(1))
-                    // setData({...data,...activities.filter(e => e.name === name.slice(1))}) 
                     setData({
                       ...data,
                       name:newObj[0].name,
@@ -44,13 +41,9 @@ export const AddActCountry = () => {
                     })
                 }
         }
-        // dispatch(getCountryWithoutActivity(name.slice(1)))
         setRend(true)
     },[activities])
 
-
-    
-//Trae ID de los los select
     const getID = (valor)=>{
             setData({
                 ...data,
@@ -67,7 +60,6 @@ export const AddActCountry = () => {
       const sendActivity = (e)=>{
         e.preventDefault()
         console.log(data)
-    //     // console.log(formu)
         if(data.idPais.length === 0){
           setValidation({
             ...validation,
@@ -87,7 +79,7 @@ export const AddActCountry = () => {
   return (
     <div className='divActivity'>
               <div>
-                <h2>Datos actividad</h2>
+                <h2>Data of activity</h2>
                 <div>
                     <div>
                       <p>Name:</p>
@@ -107,7 +99,7 @@ export const AddActCountry = () => {
 
               <form >
                 <div>
-                      <h2>Selecciona los paises</h2>
+                      <h2>Select to countries</h2>
                     <div>
                      {countries&&countries.map(e=> <CheckboxAct 
                                    key={e.id}
@@ -120,7 +112,7 @@ export const AddActCountry = () => {
                 </div>
                 <div className='botonCrear'>
                    <button 
-                   onClick={sendActivity}>Crear</button>
+                   onClick={sendActivity}>Add activity</button>
                    {validation.select  && <span>{validation.select}</span>}
                    {create && <span>{create}</span>}
                 </div>

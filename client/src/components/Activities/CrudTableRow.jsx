@@ -2,14 +2,11 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { deleteActivity, getACtivities } from '../../action/actionCountries/index'
+import "./TableActivity.css"
 
-export const CrudTableRow = ({id,name,dificulty,duration,season}) => {
+export const CrudTableRow = ({id,name,dificulty,duration,season,number}) => {
   const [isClass, setIsClass] = useState(null)
   const dispatch = useDispatch()
-
-  const disp = {
-    display : "none"
-  }
 
   const deleteActivities = ()=>{
     try {
@@ -21,19 +18,26 @@ export const CrudTableRow = ({id,name,dificulty,duration,season}) => {
     }
   }
 
-//className={isClass && disp}
 
   return (
-    <ul style={isClass && {display:"none"}}>
-        <li>{name}</li>
-        <li>{dificulty}</li>
-        <li>{duration}</li>
-        <li>{season}</li>
-        <div>
-            <button>Editar</button>
-            <button onClick={()=>deleteActivities()}>Eliminar</button>
-            <Link to={`/AddActCountry/:${name}`}>Add Country</Link>
-        </div>
-    </ul>
+        <tr style={isClass && {display:"none"}}>
+          <td>{number}</td>
+          <td>{name}</td>
+          <td>{dificulty}</td>
+          <td>{duration}</td>
+          <td>{season}</td>
+          
+          <td>
+            
+            <div className='content-botton-activity'>
+              <button className='btn-activity-action'>Edit</button>
+              <button className='btn-activity-action' onClick={()=>deleteActivities()}>Delete</button>
+              <button className='btn-activity-action'>
+                <Link to={`/AddActCountry/:${name}`}>Add Country</Link>
+              </button>
+            </div>
+          </td>
+          
+        </tr>
   )
 }
